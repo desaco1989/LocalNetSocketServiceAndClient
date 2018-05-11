@@ -30,10 +30,10 @@ import java.net.Socket;
 
 public class ServerPageActivity extends Activity {
 
-    private ServerThread serverThread = null;
+//    private ServerThread serverThread = null;
     private String sendBuffer = null;
     private String receiveBuffer = null;
-    private TcpSocketServerUtils tss = null;
+//    private TcpSocketServerUtils tss = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +43,14 @@ public class ServerPageActivity extends Activity {
         initListener();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (tss != null) {
-            tss.closeStream();
-        }
-
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        if (tss != null) {
+//            tss.closeStream();
+//        }
+//
+//    }
 
     private EditText machinePortEt;
     private Button connectServiceBt;
@@ -89,45 +89,61 @@ public class ServerPageActivity extends Activity {
         oneMsgShowTv = (TextView) findViewById(R.id.one_msg_show);
     }
 
+    private SocketServer server;
+
     private void initListener() {
+        /**socket收到消息线程*/
+        SocketServer.ServerHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                oneMsgShowTv.setText(msg.obj.toString());
+            }
+        };
+
         //监听服务器开启
         connectServiceBt.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View arg0) {
-                if (serverThread == null) {
-//                    EditText portEditText = (EditText) ServerPageActivity.this.findViewById(R.id.portID);
-                    String port = machinePortEt.getText().toString().trim();
-                    serverThread = new ServerThread(port);
-                    Log.e("desaco", "port=" + port);
-                    serverThread.start();
-
-                    Toast.makeText(ServerPageActivity.this, "开启的端口号:" + port, Toast.LENGTH_SHORT).show();
-                    connectServiceBt.setText("服务已开启！");
-                }
+//                if (serverThread == null) {
+//                    String port = machinePortEt.getText().toString().trim();
+//                    serverThread = new ServerThread(port);
+//                    Log.e("desaco", "port=" + port);
+//                    serverThread.start();
+//                }
+                /**socket服务端开始监听*/
+                String port = machinePortEt.getText().toString().trim();
+                int por = Integer.parseInt(port);
+                server = new SocketServer(por);
+                server.startListen();
+                Toast.makeText(ServerPageActivity.this, "开启的端口号:" + port, Toast.LENGTH_SHORT).show();
+                connectServiceBt.setText("服务已开启！");
             }
         });
 
         //监听发送信息
         msgSendBt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                sendBuffer = "server:" + msgContentEt.getText().toString().trim();
-                if (tss != null && sendBuffer != null) {//为了避免线程把它弄为buffer = null;
-                    try {
-                        tss.sendMessage(sendBuffer);
-                    } catch (Exception ex) {
-                    }
 
+            @Override
+            public void onClick(View v) {
+                sendBuffer = msgContentEt.getText().toString().trim();
+//                if (tss != null && !"".equals(sendBuffer)) {//为了避免线程把它弄为buffer = null;
+//                    try {
+//                        tss.sendMessage("server:" + sendBuffer);
+//                        Toast.makeText(ServerPageActivity.this, "服务器发送的消息为：" + sendBuffer, Toast.LENGTH_SHORT).show();
+//                        Log.e("desaco", "服务器发送的消息为：" + sendBuffer);
+//                    } catch (Exception ex) {
+//
+//                    }
+//                }
+                if(server != null){
+                    server.sendMsg("server:" + sendBuffer);
+                        Toast.makeText(ServerPageActivity.this, "服务器发送的消息为：" + sendBuffer, Toast.LENGTH_SHORT).show();
+                        Log.e("desaco", "服务器发送的消息为：" + sendBuffer);
                 }
 
             }
         });
     }
-
-    private Handler handler = new Handler() {//线程与UI交互更新界面
-        public void handleMessage(Message msg) {
-            oneMsgShowTv.setText(receiveBuffer);
-            Toast.makeText(ServerPageActivity.this, "收到来自客户端的消息： " + receiveBuffer, Toast.LENGTH_SHORT).show();
-        }
-    };
 
     private String intToIp(int i) {
         return (i & 0xFF) + "." +
@@ -136,47 +152,56 @@ public class ServerPageActivity extends Activity {
                 (i >> 24 & 0xFF);
     }
 
-    class ServerThread extends Thread {
-        private int port;
+//    private Handler handler = new Handler() {//线程与UI交互更新界面
+//        public void handleMessage(Message msg) {
+//            oneMsgShowTv.setText(receiveBuffer);
+//            Toast.makeText(ServerPageActivity.this, "收到来自客户端的消息： " + receiveBuffer, Toast.LENGTH_SHORT).show();
+//        }
+//    };
+//
 
-        public ServerThread(String port) {
-            this.port = Integer.parseInt(port);
-        }
-
-        public void run() {
-            //建立服务端
-            if (tss == null)
-                tss = new TcpSocketServerUtils(this.port);
-            new Thread(new WriteThread()).start();//开启“写”线程
-            new Thread(new ReadThread()).start();//开启“读”线程
-        }
-
-        private class ReadThread implements Runnable {
-            public void run() {
-                while (true) {
-                    if ((receiveBuffer = tss.getMessage()) != null) {//收到不为null的信息就发送出去
-                        handler.sendEmptyMessage(0);
-                    }
-                }
-            }
-        }
-
-        private class WriteThread implements Runnable {
-            public void run() {
-                while (true) {
-                    try {
-                        //发送数据
-                        if (sendBuffer != null) {
-                            //tss.sendMessage(1821,buffer);
-                            tss.sendMessage(sendBuffer);
-                            sendBuffer = null;//清空，不让它连续发
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
+//
+//    class ServerThread extends Thread {
+//        private int port;
+//
+//        public ServerThread(String port) {
+//            this.port = Integer.parseInt(port);
+//        }
+//
+//        public void run() {
+//            //建立服务端
+//            if (tss == null)
+//                tss = new TcpSocketServerUtils(this.port);
+//            new Thread(new WriteThread()).start();//开启“写”线程
+//            new Thread(new ReadThread()).start();//开启“读”线程
+//        }
+//
+//        private class ReadThread implements Runnable {
+//            public void run() {
+//                while (true) {
+//                    if ((receiveBuffer = tss.getMessage()) != null) {//收到不为null的信息就发送出去
+//                        handler.sendEmptyMessage(0);
+//                    }
+//                }
+//            }
+//        }
+//
+//        private class WriteThread implements Runnable {
+//            public void run() {
+//                while (true) {
+//                    try {
+//                        //发送数据
+//                        if (sendBuffer != null) {
+//                            //tss.sendMessage(1821,buffer);
+//                            tss.sendMessage(sendBuffer);
+//                            sendBuffer = null;//清空，不让它连续发
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }

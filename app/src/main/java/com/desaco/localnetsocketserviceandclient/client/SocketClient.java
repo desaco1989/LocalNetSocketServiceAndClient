@@ -67,7 +67,6 @@ public class SocketClient {
     }
 
 
-
     /**
      * @effect 得到输出字符串
      */
@@ -87,19 +86,18 @@ public class SocketClient {
         while (isClient) {
             try {
                 in = client.getInputStream();
-
                 /**得到的是16进制数，需要进行解析*/
                 byte[] bt = new byte[50];
                 in.read(bt);
                 str = new String(bt, "UTF-8");
+                
             } catch (IOException e) {
             }
             if (str != null) {
                 Message msg = new Message();
                 msg.obj = str;
-                mHandler.sendMessage(msg);
+                mHandler.sendMessage(msg);//TODO
             }
-
         }
     }
 
@@ -121,4 +119,23 @@ public class SocketClient {
         }).start();
     }
 
+    public void closeSocket() {
+        try {
+            if (out != null) {
+                out.close();
+            }
+            if (in != null) {
+                in.close();
+            }
+            if (client != null) {
+                client.close();
+            }
+        } catch (Exception ex) {
+
+        }
+    }
+
+    public void resetConnet() {
+
+    }
 }

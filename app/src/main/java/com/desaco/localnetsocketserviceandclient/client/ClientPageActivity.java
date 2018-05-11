@@ -40,21 +40,16 @@ public class ClientPageActivity extends Activity {
     private String ip = null;
     private int port;
     private int cmdCount = 0;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        try {
-            if (s != null) {
-                s.close();
-            }
-        } catch (IOException ex) {
-
-        }
-
-    }
-
     private Context mContext;
+
+    private EditText machineIpEt;
+    private EditText machinePortEt;
+    private Button connectServiceBt;
+    private EditText msgContentEt;
+    private Button msgSendBt;
+    private TextView oneMsgShowTv;
+    private SocketClient client;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,14 +80,6 @@ public class ClientPageActivity extends Activity {
         //one_msg_show
         oneMsgShowTv = (TextView) findViewById(R.id.one_msg_show);
     }
-
-    private EditText machineIpEt;
-    private EditText machinePortEt;
-    private Button connectServiceBt;
-    private EditText msgContentEt;
-    private Button msgSendBt;
-    private TextView oneMsgShowTv;
-    private SocketClient client;
 
     private void initListener() {
 
@@ -138,9 +125,25 @@ public class ClientPageActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 oneMsgShowTv.setText(msg.obj.toString());
+
                 Toast.makeText(ClientPageActivity.this, "收到来自服务器端的消息： " + msg.obj.toString(), Toast.LENGTH_SHORT).show();
             }
         };
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            if (s != null) {
+                s.close();
+            }
+            if (client != null) {
+                client.closeSocket();
+            }
+        } catch (IOException ex) {
+
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package com.desaco.localnetsocketserviceandclient.server;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +41,7 @@ public class SocketServer {
      * @steps listen();
      * @effect socket监听数据
      */
-    public void beginListen() {
+    public void startListen() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -83,11 +84,12 @@ public class SocketServer {
      * @steps write();
      * @effect socket服务端发送信息
      */
-    public void sendMessage(final String chat) {
+    public void sendMsg(final String chat) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    Log.e("desaco","TcpSocketServerUtils,server sendMessage chat:"+chat);
                     PrintWriter out = new PrintWriter(socket.getOutputStream());
                     out.print(chat);
                     out.flush();
