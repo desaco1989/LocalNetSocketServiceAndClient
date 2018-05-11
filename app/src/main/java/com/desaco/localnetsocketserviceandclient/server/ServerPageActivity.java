@@ -25,6 +25,7 @@ import java.net.Socket;
 
 /**
  * Created by desaco on 2018/4/28.
+ * http://mrhe.iteye.com/blog/1914144
  */
 
 public class ServerPageActivity extends Activity {
@@ -34,10 +35,9 @@ public class ServerPageActivity extends Activity {
     private String receiveBuffer = null;
     private TcpSocketServerUtils tss = null;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_server_client);
 
         initView();
         initListener();
@@ -66,7 +66,6 @@ public class ServerPageActivity extends Activity {
             wifiManager.setWifiEnabled(true);
         }
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-
         //tips_tv
         TextView tipsTv = (TextView) findViewById(R.id.tips_tv);
         tipsTv.setText("服务器端：请先开启服务器服务");
@@ -100,7 +99,8 @@ public class ServerPageActivity extends Activity {
                     serverThread = new ServerThread(port);
                     Log.e("desaco", "port=" + port);
                     serverThread.start();
-                    Toast.makeText(ServerPageActivity.this, "开启的端口号:"+port, Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(ServerPageActivity.this, "开启的端口号:" + port, Toast.LENGTH_SHORT).show();
                     connectServiceBt.setText("服务已开启！");
                 }
             }
@@ -109,14 +109,11 @@ public class ServerPageActivity extends Activity {
         //监听发送信息
         msgSendBt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendBuffer = "server:"+msgContentEt.getText().toString().trim();
-//                if (sendBuffer != null){//为了避免线程把它弄为buffer = null;
-//                    Toast.makeText(ServerPageActivity.this, sendBuffer, Toast.LENGTH_SHORT).show();
-//                }
-                if(tss != null){
+                sendBuffer = "server:" + msgContentEt.getText().toString().trim();
+                if (tss != null && sendBuffer != null) {//为了避免线程把它弄为buffer = null;
                     try {
                         tss.sendMessage(sendBuffer);
-                    }catch (Exception ex){
+                    } catch (Exception ex) {
                     }
 
                 }
@@ -128,12 +125,10 @@ public class ServerPageActivity extends Activity {
     private Handler handler = new Handler() {//线程与UI交互更新界面
         public void handleMessage(Message msg) {
             oneMsgShowTv.setText(receiveBuffer);
-            Toast.makeText(ServerPageActivity.this, "收到来自客户端的消息 "+receiveBuffer, Toast.LENGTH_SHORT).show();
+            Toast.makeText(ServerPageActivity.this, "收到来自客户端的消息： " + receiveBuffer, Toast.LENGTH_SHORT).show();
         }
     };
 
-    //TODO --------------------------------- http://mrhe.iteye.com/blog/1914144
-    //TODO ---------------------------------
     private String intToIp(int i) {
         return (i & 0xFF) + "." +
                 ((i >> 8) & 0xFF) + "." +
@@ -157,7 +152,6 @@ public class ServerPageActivity extends Activity {
         }
 
         private class ReadThread implements Runnable {
-
             public void run() {
                 while (true) {
                     if ((receiveBuffer = tss.getMessage()) != null) {//收到不为null的信息就发送出去
@@ -184,8 +178,5 @@ public class ServerPageActivity extends Activity {
             }
         }
     }
-    //TODO ---------------------------------
-    //TODO ---------------------------------
-
 
 }
