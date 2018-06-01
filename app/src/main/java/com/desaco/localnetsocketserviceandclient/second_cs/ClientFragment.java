@@ -31,6 +31,51 @@ public class ClientFragment extends Fragment implements View.OnClickListener {
     private Button conn;
     private boolean isConnected;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.client, null);
+
+        send = v.findViewById(R.id.etx);
+        recv = v.findViewById(R.id.recv);
+        status = v.findViewById(R.id.tv);
+        conn = v.findViewById(R.id.toolbarBtn);
+        setClick(this, v, R.id.send, R.id.toolbarBtn, R.id.clear);
+        return v;
+    }
+
+    private void setClick(View.OnClickListener listener, View v, int... ids) {
+        for (int i : ids)
+            v.findViewById(i).setOnClickListener(listener);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.send:
+                if (!isConnected) {
+                    show("未连接");
+                    return;
+                }
+                String s = send.getText().toString();
+                if (s.isEmpty()) {
+                    show("要发送内容为空");
+                    return;
+                }
+                client.send(s + '\n');
+                break;
+            case R.id.toolbarBtn:
+                if (isConnected) {
+                    client.close();
+                } else
+                    dlg();
+                break;
+            case R.id.clear:
+                recv.setText(null);
+                break;
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,49 +151,4 @@ public class ClientFragment extends Fragment implements View.OnClickListener {
         Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.client, null);
-        send = v.findViewById(R.id.etx);
-        recv = v.findViewById(R.id.recv);
-        status = v.findViewById(R.id.tv);
-        conn = v.findViewById(R.id.toolbarBtn);
-        setClick(this, v, R.id.send, R.id.toolbarBtn, R.id.clear);
-        return v;
-    }
-
-    private void setClick(View.OnClickListener listener, View v, int... ids) {
-        for (int i : ids)
-            v.findViewById(i).setOnClickListener(listener);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.send:
-                if (!isConnected) {
-                    show("未连接");
-                    return;
-                }
-                String s = send.getText().toString();
-                if (s.isEmpty()) {
-                    show("要发送内容为空");
-                    return;
-                }
-                client.send(s + '\n');
-                break;
-            case R.id.toolbarBtn:
-                if (isConnected) {
-                    client.close();
-                } else
-                    dlg();
-                break;
-            case R.id.clear:
-                recv.setText(null);
-                break;
-        }
-
-
-    }
 }

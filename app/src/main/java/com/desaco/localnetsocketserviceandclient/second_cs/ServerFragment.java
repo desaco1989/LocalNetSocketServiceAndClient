@@ -38,6 +38,7 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.server, null);
+
         send = v.findViewById(R.id.etx);
         recv = v.findViewById(R.id.recv);
         status = v.findViewById(R.id.tv);
@@ -53,7 +54,7 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         int ipAddress = wifiInfo.getIpAddress();
         String ip = intToIp(ipAddress);
-        //
+        //IP地址
         TextView showIP = (TextView) v.findViewById(R.id.show_ip_tv);
         showIP.setText(ip);
 
@@ -65,6 +66,34 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
                 ((i >> 8) & 0xFF) + "." +
                 ((i >> 16) & 0xFF) + "." +
                 (i >> 24 & 0xFF);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.send:
+                if (!isConnected) {
+                    show("客户端未连接");
+                    return;
+                }
+                String s = send.getText().toString();
+                if (s.isEmpty()) {
+                    show("要发送内容为空");
+                    return;
+                }
+                server.send(s + '\n');
+                break;
+            case R.id.toolbarBtn:
+                if (isBound) {
+                    server.close();
+                } else {
+                    dlg();
+                }
+                break;
+            case R.id.clear:
+                recv.setText(null);
+                break;
+        }
     }
 
     @Override
@@ -107,6 +136,8 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
                         break;
                     case TcpMsg.MSG:
                         recv.append((String) message.obj);
+
+                        server.distributeMsg((String) message.obj);//TODO
                         break;
                 }
 
@@ -146,38 +177,8 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     private void setClick(View.OnClickListener listener, View v, int... ids) {
         for (int i : ids)
             v.findViewById(i).setOnClickListener(listener);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.send:
-                if (!isConnected) {
-                    show("客户端未连接");
-                    return;
-                }
-                String s = send.getText().toString();
-                if (s.isEmpty()) {
-                    show("要发送内容为空");
-                    return;
-                }
-                server.send(s + '\n');
-                break;
-            case R.id.toolbarBtn:
-                if (isBound) {
-                    server.close();
-                } else
-                    dlg();
-                break;
-            case R.id.clear:
-                recv.setText(null);
-                break;
-        }
-
-
     }
 }

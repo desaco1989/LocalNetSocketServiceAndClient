@@ -54,6 +54,7 @@ public class SocketManager extends Thread {
 
     private class Listener extends Thread {
         private BufferedReader br;
+
         Listener(BufferedReader br) {
             this.br = br;
         }
@@ -107,6 +108,7 @@ public class SocketManager extends Thread {
                     }
             }
             noTask = true;
+
             switch (what) {
                 case 0:
                     try {

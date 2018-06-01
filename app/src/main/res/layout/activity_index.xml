@@ -9,25 +9,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:textColor="#ff0000" />
 
     <Button
-        android:textAllCaps="false"
         android:id="@+id/first_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:text="第一种CS实现： Socket通信" />
+        android:text="第一种CS实现： Socket通信"
+        android:textAllCaps="false" />
 
     <Button
-        android:textAllCaps="false"
         android:id="@+id/second_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:text="第二种CS实现： Socket通信" />
+        android:text="第二种CS实现： Socket通信"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:id="@+id/third_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#ff0000" />
+
+        <Button
+            android:id="@+id/third_server_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="第3种CS实现： 服务器端， Socket通信"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/third_client_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="第3种CS实现： 客户端，Socket通信"
+            android:textAllCaps="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#ff0000" />
+    </LinearLayout>
 
 </LinearLayout>

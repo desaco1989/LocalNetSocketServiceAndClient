@@ -2,6 +2,9 @@ package com.desaco.localnetsocketserviceandclient.second_cs;
 
 import android.os.Handler;
 
+import com.desaco.localnetsocketserviceandclient.second_cs.SocketManager;
+import com.desaco.localnetsocketserviceandclient.second_cs.TcpMsg;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -15,36 +18,37 @@ public class TcpClient implements Runnable {
     private int port;
     private boolean isConnected;
     private SocketManager socketManager;
-    TcpClient(Handler handler)
-    {
-        this.handler=handler;
+
+    TcpClient(Handler handler) {
+        this.handler = handler;
     }
-    public void start(String host, int port)
-    {
-        this.host=host;
-        this.port=port;
-        if(isConnected)
+
+    public void start(String host, int port) {
+        this.host = host;
+        this.port = port;
+        if (isConnected)
             close();
         new Thread(this).start();
     }
-    public void close()
-    {
-        if(isConnected) {
+
+    public void close() {
+        if (isConnected) {
             socketManager.close();
             isConnected = false;
         }
     }
-    public void send(String msg)
-    {
+
+    public void send(String msg) {
         socketManager.send(msg);
     }
+
     @Override
     public void run() {
         try {
-            Socket socket=new Socket(host,port);
+            Socket socket = new Socket(host, port);
             handler.sendEmptyMessage(TcpMsg.CONNECT_OK);
-            isConnected=true;
-            socketManager=new SocketManager(socket,handler);
+            isConnected = true;
+            socketManager = new SocketManager(socket, handler);
             socketManager.start();
         } catch (IOException e) {
             e.printStackTrace();

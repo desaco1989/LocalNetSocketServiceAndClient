@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="#fff"
-        android:text="客户端 "
+        android:text="客户端-  "
     />
     <TextView
         android:id="@+id/tv"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="18sp"
-        android:textColor="#fff"
+        android:textColor="#E44EC6"
         android:ellipsize="end"
         />
     <Button
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="连接"
-        android:textColor="#fff"
+        android:textColor="#ff0000"
         android:onClick="onClick"
         />
 </LinearLayout>

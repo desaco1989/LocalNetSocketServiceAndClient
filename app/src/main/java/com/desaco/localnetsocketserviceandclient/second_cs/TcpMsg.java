@@ -16,5 +16,5 @@ public class TcpMsg {
     public static final int UNEXPECTED_CLOSE = 496;
     public static final int MSG = 947;
     public static final int SEND_ERR = 570;
-    public static final int CLINET_CONNECTED=23;
+    public static final int CLINET_CONNECTED = 23;
 }
