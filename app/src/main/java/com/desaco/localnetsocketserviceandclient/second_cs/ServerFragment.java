@@ -89,11 +89,11 @@ public class ServerFragment extends Fragment implements View.OnClickListener {
                         show("绑定端口失败");
                         break;
                     case TcpMsg.UNEXPECTED_CLOSE://TODO
-//                        server.close();
+                        server.close();
                         show("客户端已断开");
-//                        isConnected = false;
-//                        status.setText("");
-//                        conn.setText("绑定");
+                        isConnected = false;
+                        status.setText("");
+                        conn.setText("绑定");
                         break;
                     case TcpMsg.SERVER_CLOSE_OK:
                         show("端口已释放");
