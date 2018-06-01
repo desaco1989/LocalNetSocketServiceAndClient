@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.client;
+package com.desaco.localnetsocketserviceandclient.first_cs.client;
 
 import android.content.Context;
 import android.os.Handler;

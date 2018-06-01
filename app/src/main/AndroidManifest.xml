@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".first_cs.MainActivity"></activity>
 
         <activity android:name=".IndexActivity">
             <intent-filter>
@@ -27,10 +27,10 @@
         </activity>
 
 
-        <activity android:name="com.desaco.localnetsocketserviceandclient.client.ClientPageActivity">
+        <activity android:name="com.desaco.localnetsocketserviceandclient.first_cs.client.ClientPageActivity">
 
         </activity>
-        <activity android:name="com.desaco.localnetsocketserviceandclient.server.ServerPageActivity">
+        <activity android:name="com.desaco.localnetsocketserviceandclient.first_cs.server.ServerPageActivity">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 

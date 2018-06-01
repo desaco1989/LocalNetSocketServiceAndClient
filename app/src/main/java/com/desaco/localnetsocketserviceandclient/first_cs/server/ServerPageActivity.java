@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.server;
+package com.desaco.localnetsocketserviceandclient.first_cs.server;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,13 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.desaco.localnetsocketserviceandclient.R;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * Created by desaco on 2018/4/28.

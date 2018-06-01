@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.desaco.localnetsocketserviceandclient.first_cs.MainActivity;
 import com.desaco.localnetsocketserviceandclient.second_cs.SecondMainActivity;
 
 /**

@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.server;
+package com.desaco.localnetsocketserviceandclient.first_cs.server;
 
 import android.os.Handler;
 import android.os.Message;

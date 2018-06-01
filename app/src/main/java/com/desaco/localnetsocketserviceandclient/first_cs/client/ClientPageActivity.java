@@ -1,9 +1,7 @@
-package com.desaco.localnetsocketserviceandclient.client;
+package com.desaco.localnetsocketserviceandclient.first_cs.client;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,18 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.desaco.localnetsocketserviceandclient.R;
-import com.desaco.localnetsocketserviceandclient.server.ServerPageActivity;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.Arrays;
 
 /**
  * Created by desaco on 2018/4/28.
