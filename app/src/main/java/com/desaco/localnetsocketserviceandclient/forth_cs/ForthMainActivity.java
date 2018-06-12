@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +18,7 @@ import android.widget.Toast;
 
 import com.desaco.localnetsocketserviceandclient.R;
 
-public class ForthCsActivity extends Activity implements OnClickListener {
+public class ForthMainActivity extends Activity implements OnClickListener {
 
     private BroadcastReceiver bcReceiver;
     public static Context s_context;
@@ -97,7 +96,7 @@ public class ForthCsActivity extends Activity implements OnClickListener {
     }
 
     public void showMsg(String str) {
-        Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ForthMainActivity.this, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override

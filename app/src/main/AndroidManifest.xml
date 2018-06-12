@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".first_cs.MainActivity"></activity>
+        <activity android:name=".first_cs.FirstMainActivity"></activity>
 
         <activity android:name=".IndexActivity">
             <intent-filter>

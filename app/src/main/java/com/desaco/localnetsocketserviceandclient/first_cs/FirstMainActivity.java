@@ -10,7 +10,7 @@ import com.desaco.localnetsocketserviceandclient.R;
 import com.desaco.localnetsocketserviceandclient.first_cs.client.ClientPageActivity;
 import com.desaco.localnetsocketserviceandclient.first_cs.server.ServerPageActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class FirstMainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void jump(Class<?> clazz) {
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, clazz);
+        intent.setClass(FirstMainActivity.this, clazz);
         startActivity(intent);
     }
 }

@@ -1,7 +1,6 @@
 package com.desaco.localnetsocketserviceandclient.forth_cs;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.channels.CancelledKeyException;
 import java.nio.channels.ClosedSelectorException;
@@ -13,7 +12,6 @@ import java.nio.charset.Charset;
 
 
 import android.content.Intent;
-import android.text.TextUtils;
 
 /**
  * 客户端读消息线程
@@ -97,7 +95,7 @@ public class SocketInputThread extends Thread {
 
                             i.putExtra("response", receivedString);
 
-                            MainActivity.s_context.sendBroadcast(i);
+                            ForthMainActivity.s_context.sendBroadcast(i);
 
                         } catch (CharacterCodingException e) {
                             // TODO Auto-generated catch block
