@@ -45,6 +45,15 @@
         <activity android:name="com.desaco.localnetsocketserviceandclient.third_cs.client.ThirdClientActivity"></activity>
         <activity android:name="com.desaco.localnetsocketserviceandclient.third_cs.Server.ThirdServerActivity"></activity>
 
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.FifthMainActivity" />
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.TcpclientActivity" />
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.TcpserverActivity" />
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.TestActivity" />
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.UdpclientActivity" />
+        <activity android:name="com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.UdpserverActivity" />
+
+        <activity android:name="com.desaco.localnetsocketserviceandclient.sixth_custom_socket.SixthMainActivity"></activity>
+
     </application>
 
 </manifest>

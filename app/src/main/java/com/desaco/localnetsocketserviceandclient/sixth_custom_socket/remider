@@ -1,0 +1,29 @@
+1.数据类协议（Data）
+    长度（length，32bit）
+    版本号（version，8bit，前3位预留，后5位用于表示真正的版本号）
+    数据类型（type，8bit，0表示数据）
+    业务类型（pattion，8bit，0表示push，其他暂未定）
+    数据格式（dtype，8bit，0表示json，其他暂未定）
+    消息id（msgId，32bit）
+    正文数据（data）
+
+2.数据ack类协议（DataAck）
+    长度（length，32bit）
+    版本号（version，8bit，前3位预留，后5位用于表示真正的版本号）
+    数据类型（type，8bit，1表示数据ack）
+    ack消息id（ackMsgId，32bit）
+    预留信息（unused）
+
+3.心跳类协议（ping）
+    长度（length，32bit）
+    版本号（version，8bit，前3位预留，后5位用于表示真正的版本号）
+    数据类型（type，8bit，2表示心跳）
+    心跳id（pingId，32bit，client上报取奇数，即1，3，5…，server下发取偶数，即0，2，4…）
+    预留信息（unused）
+
+4.心跳ack类协议（pingAck）
+    长度（length，32bit）
+    版本号（version，8bit，前3位预留，后5位用于表示真正的版本号）
+    数据类型（type，8bit，3表示心跳ack）
+    ack心跳id（pingId，32bit，client上报取奇数，即1，3，5…，server下发取偶数，即0，2，4…）
+    预留信息（unused）

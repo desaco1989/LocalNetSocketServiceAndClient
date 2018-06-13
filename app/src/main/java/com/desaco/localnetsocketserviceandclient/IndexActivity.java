@@ -9,8 +9,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.FifthMainActivity;
 import com.desaco.localnetsocketserviceandclient.first_cs.FirstMainActivity;
 import com.desaco.localnetsocketserviceandclient.second_cs.SecondMainActivity;
+import com.desaco.localnetsocketserviceandclient.sixth_custom_socket.SixthMainActivity;
 import com.desaco.localnetsocketserviceandclient.third_cs.Server.ThirdServerActivity;
 import com.desaco.localnetsocketserviceandclient.third_cs.client.ThirdClientActivity;
 
@@ -48,18 +50,21 @@ public class IndexActivity extends Activity implements View.OnClickListener {
         thirdClientBt.setOnClickListener(this);
         //第四种更是没有Activity界面
 
-        //
-
+        //第5种更是没有Activity界面
+        Button fifthClientBt = (Button) findViewById(R.id.fifth_cs_bt);
+        fifthClientBt.setOnClickListener(this);
+        // 第6种更是没有Activity界面
+        Button sixthClientBt = (Button) findViewById(R.id.sixth_cs_bt);
+        sixthClientBt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.first_bt:
+            case R.id.first_bt://第1种Socket实现 TODO
                 jump(FirstMainActivity.class);
                 break;
-            case R.id.second_bt:
-                //SecondMainActivity
+            case R.id.second_bt://第2种Socket实现 TODO
                 jump(SecondMainActivity.class);
                 break;
             case R.id.third_server_bt://第三种通信有Bug
@@ -69,6 +74,12 @@ public class IndexActivity extends Activity implements View.OnClickListener {
             case R.id.third_client_bt://第三种通信有Bug
                 //ThirdClientActivity
                 jump(ThirdClientActivity.class);
+                break;
+            case R.id.fifth_cs_bt:
+                jump(FifthMainActivity.class);//第5种通信
+                break;
+            case R.id.sixth_cs_bt:
+                jump(SixthMainActivity.class);//第6种通信
                 break;
             default:
                 break;

@@ -66,6 +66,24 @@
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:background="#ff0000" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/fifth_cs_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="第5种CS实现：Socket通信"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/sixth_cs_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="第6种CS实现：Socket通信"
+        android:textAllCaps="false" />
 
 </LinearLayout>

@@ -59,12 +59,13 @@ public class ServerPageActivity extends Activity {
             wifiManager.setWifiEnabled(true);
         }
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        int ipAddress = wifiInfo.getIpAddress();
         //tips_tv
         TextView tipsTv = (TextView) findViewById(R.id.tips_tv);
         tipsTv.setText("服务器端：请先开启服务器服务");
         //machine_ip
         EditText machineIpTv = (EditText) findViewById(R.id.machine_ip);
-        int ipAddress = wifiInfo.getIpAddress();
+
         String ip = intToIp(ipAddress);
         machineIpTv.setText(ip + "-ip:" + ipAddress);
         //machine_port

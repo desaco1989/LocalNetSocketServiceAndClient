@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本地端口：" />
+
+        <EditText
+            android:id="@+id/udpserver_edit_port"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="端口"
+            android:inputType="number"
+            android:text="4567" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自动回复：" />
+
+        <EditText
+            android:id="@+id/udpserver_edit_autoreply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/udpserver_bu_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启/关闭" />
+
+    <com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout
+        android:id="@+id/udpserver_console"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
