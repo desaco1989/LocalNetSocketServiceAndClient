@@ -1,10 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical"
-              >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +13,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="目的地址/端口："/>
+            android:text="目的地址/端口：" />
 
         <EditText
             android:id="@+id/udpclient_edit_ip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="255.255.255.255:4567"
-            android:text="255.255.255.255:4567"/>
+            android:text="255.255.255.255:4567" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,28 +31,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发送消息："/>
+            android:text="发送消息：" />
 
         <EditText
             android:id="@+id/udpclient_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <android.support.v7.widget.SwitchCompat
         android:id="@+id/udpclient_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="接受回复消息:"/>
+        android:text="接受回复消息:" />
 
     <Button
         android:id="@+id/udpclient_bu_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发送"/>
+        android:text="发送" />
 
     <com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout
         android:id="@+id/tcpclient_console"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
 </LinearLayout>

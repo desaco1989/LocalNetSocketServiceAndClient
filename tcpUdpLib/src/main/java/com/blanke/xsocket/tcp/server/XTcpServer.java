@@ -22,6 +22,7 @@ import java.util.Map;
  * tcp服务端
  */
 public class XTcpServer extends BaseXSocket implements TcpClientListener {
+
     private static final String TAG = "XTcpServer";
     protected int port;
     protected ServerState mServerState;

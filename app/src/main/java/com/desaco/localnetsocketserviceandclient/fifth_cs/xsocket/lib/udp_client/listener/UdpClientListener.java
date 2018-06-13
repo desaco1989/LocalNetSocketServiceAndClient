@@ -1,8 +1,8 @@
-package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.listener;
+package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.listener;
 
 
-import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.XUdp;
-import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.bean.UdpMsg;
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.XUdp;
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.bean.UdpMsg;
 
 /**
  */

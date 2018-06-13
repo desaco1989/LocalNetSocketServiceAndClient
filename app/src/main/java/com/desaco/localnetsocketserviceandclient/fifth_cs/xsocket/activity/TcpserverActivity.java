@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.blanke.xsocket.tcp.client.TcpConnConfig;
 import com.blanke.xsocket.tcp.client.XTcpClient;
@@ -15,6 +16,7 @@ import com.blanke.xsocket.tcp.server.listener.TcpServerListener;
 import com.blanke.xsocket.utils.CharsetUtil;
 import com.blanke.xsocket.utils.StringValidationUtils;
 import com.desaco.localnetsocketserviceandclient.R;
+import com.desaco.localnetsocketserviceandclient.common_utils.CommonUtils;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout;
 
 public class TcpserverActivity extends AppCompatActivity implements View.OnClickListener, TcpServerListener {
@@ -38,6 +40,9 @@ public class TcpserverActivity extends AppCompatActivity implements View.OnClick
 
         tcpserverBuSend.setOnClickListener(this);
         tcpserverBuConnect.setOnClickListener(this);
+        //ip_tcp_server
+        TextView tcpServerTv = (TextView)findViewById(R.id.ip_tcp_server);
+        tcpServerTv.setText(CommonUtils.getMobileIp(this));
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.blanke.xsocket.tcp.client.bean.TcpMsg;
 import com.blanke.xsocket.udp.client.UdpClientConfig;
@@ -13,6 +14,7 @@ import com.blanke.xsocket.udp.client.bean.UdpMsg;
 import com.blanke.xsocket.udp.client.listener.UdpClientListener;
 import com.blanke.xsocket.utils.StringValidationUtils;
 import com.desaco.localnetsocketserviceandclient.R;
+import com.desaco.localnetsocketserviceandclient.common_utils.CommonUtils;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout;
 
 public class UdpserverActivity extends AppCompatActivity implements View.OnClickListener, UdpClientListener {
@@ -26,11 +28,15 @@ public class UdpserverActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_udpserver);
+
         udpserverEditPort = (EditText) findViewById(R.id.udpserver_edit_port);
         udpserverBuStart = (Button) findViewById(R.id.udpserver_bu_start);
         udpserverEditAutoreply = (EditText) findViewById(R.id.udpserver_edit_autoreply);
         udpserverConsole = (ConsoleLayout) findViewById(R.id.udpserver_console);
         udpserverBuStart.setOnClickListener(this);
+
+        TextView tcpServerTv = (TextView)findViewById(R.id.ip_tcp_server);
+        tcpServerTv.setText(CommonUtils.getMobileIp(this));
     }
 
     @Override

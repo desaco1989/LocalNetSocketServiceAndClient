@@ -1,9 +1,9 @@
-package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client;
+package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client;
 
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.BaseXSocket;
-import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.bean.UdpMsg;
-import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.listener.UdpClientListener;
-import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.manager.UdpSocketManager;
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.bean.UdpMsg;
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.listener.UdpClientListener;
+import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.manager.UdpSocketManager;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.tcp.client.bean.TargetInfo;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.tcp.client.bean.TcpMsg;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.utils.CharsetUtil;
