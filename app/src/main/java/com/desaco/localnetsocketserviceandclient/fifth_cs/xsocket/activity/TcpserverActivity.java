@@ -29,6 +29,7 @@ public class TcpserverActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tcpserver);
+
         tcpserverEditPort = (EditText) findViewById(R.id.tcpserver_edit_port);
         tcpserverBuConnect = (Button) findViewById(R.id.tcpserver_bu_connect);
         tcpserverEdit = (EditText) findViewById(R.id.tcpserver_edit);
@@ -41,8 +42,9 @@ public class TcpserverActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.tcpserver_bu_connect) {
+        if (v.getId() == R.id.tcpserver_bu_connect) {//开启或关闭服务
             tcpserverConsole.clearConsole();
+
             if (mXTcpServer != null && mXTcpServer.isListening()) {
                 mXTcpServer.stopServer();
             } else {
@@ -60,7 +62,7 @@ public class TcpserverActivity extends AppCompatActivity implements View.OnClick
                     addMsg("端口输入错误");
                 }
             }
-        } else {
+        } else {//发送消息
             String text = tcpserverEdit.getText().toString().trim();
             if (mXTcpServer != null) {
                 mXTcpServer.sendMsgToAll(text);

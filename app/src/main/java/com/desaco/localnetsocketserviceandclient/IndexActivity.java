@@ -76,10 +76,10 @@ public class IndexActivity extends Activity implements View.OnClickListener {
                 jump(ThirdClientActivity.class);
                 break;
             case R.id.fifth_cs_bt:
-                jump(FifthMainActivity.class);//第5种通信
+                jump(FifthMainActivity.class);//第5种通信，自定义Socket协议 开源项目
                 break;
             case R.id.sixth_cs_bt:
-                jump(SixthMainActivity.class);//第6种通信
+                jump(SixthMainActivity.class);//第6种通信，自定义Socket协议
                 break;
             default:
                 break;
