@@ -16,6 +16,7 @@ import com.blanke.xsocket.tcp.client.helper.stickpackage.AbsStickPackageHelper;
 import com.blanke.xsocket.tcp.client.listener.TcpClientListener;
 import com.blanke.xsocket.utils.StringValidationUtils;
 import com.desaco.localnetsocketserviceandclient.R;
+import com.desaco.localnetsocketserviceandclient.common_utils.CommonUtils;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout;
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.StaticPackageLayout;
 
@@ -40,12 +41,19 @@ public class TcpclientActivity extends AppCompatActivity implements View.OnClick
         tcpclientBuConnect = (Button) findViewById(R.id.tcpclient_bu_connect);
         tcpclientEdit = (EditText) findViewById(R.id.tcpclient_edit);
         tcpclientBuSend = (Button) findViewById(R.id.tcpclient_bu_send);
+
         tcpclientStaticpackagelayout = (StaticPackageLayout) findViewById(R.id.tcpclient_staticpackagelayout);
+
         tcpclientEditIp = (EditText) findViewById(R.id.tcpclient_edit_ip);
         tcpclientConsole = (ConsoleLayout) findViewById(R.id.tcpclient_console);
+
         tcpclientSwitchReconnect = (SwitchCompat) findViewById(R.id.tcpclient_switch_reconnect);
+
         tcpclientBuConnect.setOnClickListener(this);
         tcpclientBuSend.setOnClickListener(this);
+        //tcpclientEditIp
+        String ip = CommonUtils.getMobileIp(this);
+        tcpclientEditIp.setText(ip+":2222");
     }
 
     @Override
@@ -55,7 +63,7 @@ public class TcpclientActivity extends AppCompatActivity implements View.OnClick
             if (xTcpClient != null && xTcpClient.isConnected()) {
                 xTcpClient.disconnect();
             } else {
-                AbsStickPackageHelper stickHelper = tcpclientStaticpackagelayout.getStickPackageHelper();
+                AbsStickPackageHelper stickHelper = tcpclientStaticpackagelayout.getStickPackageHelper();//TODO
                 if (stickHelper == null) {
                     addMsg("粘包参数设置错误");
                     return;
@@ -64,12 +72,13 @@ public class TcpclientActivity extends AppCompatActivity implements View.OnClick
                 String[] temp2 = temp.split(":");
                 if (temp2.length == 2 && StringValidationUtils.validateRegex(temp2[0], StringValidationUtils.RegexIP)
                         && StringValidationUtils.validateRegex(temp2[1], StringValidationUtils.RegexPort)) {
+
                     TargetInfo targetInfo = new TargetInfo(temp2[0], Integer.parseInt(temp2[1]));
                     xTcpClient = XTcpClient.getTcpClient(targetInfo);
                     xTcpClient.addTcpClientListener(this);
                     xTcpClient.config(new TcpConnConfig.Builder()
-                            .setStickPackageHelper(stickHelper)//粘包
-                            .setIsReconnect(tcpclientSwitchReconnect.isChecked())
+                            .setStickPackageHelper(stickHelper)//粘包设置 TODO
+                            .setIsReconnect(tcpclientSwitchReconnect.isChecked())//是否自动链接 TODO
                             .create());
                     if (xTcpClient.isDisconnected()) {
                         xTcpClient.connect();

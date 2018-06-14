@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.manager;
+package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.manager;
 
 import java.net.DatagramSocket;
 import java.util.HashMap;

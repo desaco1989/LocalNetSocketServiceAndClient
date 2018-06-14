@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client;
+package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client;
 
 
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.utils.CharsetUtil;

@@ -1,10 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical"
-              >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="服务器IP："/>
+            android:text="服务器IP：" />
 
         <EditText
             android:id="@+id/tcpclient_edit_ip"
@@ -22,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="10.155.1.221:2222"
-            android:text="10.155.1.221:2222"/>
+            android:text="10.155.1.221:2222" />
     </LinearLayout>
 
     <LinearLayout
@@ -33,13 +32,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="自动重连："/>
+            android:text="自动重连：" />
 
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/tcpclient_switch_reconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,13 +50,13 @@
             android:id="@+id/tcpclient_staticpackagelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp" />
 
         <Button
             android:id="@+id/tcpclient_bu_connect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="连接/断开"/>
+            android:text="连接/断开" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,22 +67,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发送消息："/>
+            android:text="发送消息：" />
 
         <EditText
             android:id="@+id/tcpclient_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <Button
         android:id="@+id/tcpclient_bu_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发送"/>
+        android:text="发送" />
 
     <com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.activity.layout.ConsoleLayout
         android:id="@+id/tcpclient_console"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
 </LinearLayout>

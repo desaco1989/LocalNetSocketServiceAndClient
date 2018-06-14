@@ -1,4 +1,4 @@
-package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.client.bean;
+package com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.udp_client.bean;
 
 
 import com.desaco.localnetsocketserviceandclient.fifth_cs.xsocket.lib.tcp.client.bean.TargetInfo;
