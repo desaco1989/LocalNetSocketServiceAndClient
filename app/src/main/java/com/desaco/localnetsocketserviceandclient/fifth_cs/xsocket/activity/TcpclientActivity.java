@@ -36,6 +36,7 @@ public class TcpclientActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tcpclient);
+
         tcpclientBuConnect = (Button) findViewById(R.id.tcpclient_bu_connect);
         tcpclientEdit = (EditText) findViewById(R.id.tcpclient_edit);
         tcpclientBuSend = (Button) findViewById(R.id.tcpclient_bu_send);

@@ -1,5 +1,6 @@
-# LocalNetSocketServiceAndClient;局域网内，Service App与Client App Socket通信
-# Android Socket实现多个客户端连接同一个服务端（IM chat）
+LocalNetSocketServiceAndClient;局域网内，Service App与Client App Socket通信
+
+Android Socket实现多个客户端连接同一个服务端（IM chat）
 
 1.socket一个服务端多个客户端，多线程这么实现，2种方式，一种：你处理客户端的连接，开一个子线程（需要注意：控制线程个数），第二种：异步挂起处理?
 
