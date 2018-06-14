@@ -155,7 +155,7 @@ public class XTcpClient extends BaseXSocket {
             return;
         }
         disconnect(msg, e);
-        if (mTcpConnConfig.isReconnect()) {//重连
+        if (mTcpConnConfig.isReconnect()) {//重连 TODO 断开连接后自动连接
             connect();
         }
     }
@@ -294,7 +294,7 @@ public class XTcpClient extends BaseXSocket {
             try {
                 InputStream is = getSocket().getInputStream();
                 while (isConnected() && !Thread.interrupted()) {
-                    byte[] result = mTcpConnConfig.getStickPackageHelper().execute(is);//粘包处理
+                    byte[] result = mTcpConnConfig.getStickPackageHelper().execute(is);//粘包处理 TODO
                     if (result == null) {//报错
                         XSocketLog.d(TAG, "tcp Receive 粘包处理失败 " + Arrays.toString(result));
                         onErrorDisConnect("粘包处理中发送错误", null);

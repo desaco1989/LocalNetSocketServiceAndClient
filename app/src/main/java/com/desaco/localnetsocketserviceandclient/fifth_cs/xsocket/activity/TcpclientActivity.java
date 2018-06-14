@@ -63,7 +63,7 @@ public class TcpclientActivity extends AppCompatActivity implements View.OnClick
             if (xTcpClient != null && xTcpClient.isConnected()) {
                 xTcpClient.disconnect();
             } else {
-                AbsStickPackageHelper stickHelper = tcpclientStaticpackagelayout.getStickPackageHelper();//TODO
+                AbsStickPackageHelper stickHelper = tcpclientStaticpackagelayout.getStickPackageHelper();//粘包相关 TODO
                 if (stickHelper == null) {
                     addMsg("粘包参数设置错误");
                     return;

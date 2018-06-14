@@ -319,12 +319,12 @@ public class ClientRequestTask implements Runnable {
     }
 
     /**
-     * 心跳实现，频率5秒
+     * 心跳实现，频率5秒  TODO
      * Created by meishan on 16/12/1.
      */
     public class HeartBeatTask extends Thread {
 
-        private static final int REPEATTIME = 5000;
+        private static final int repeat_time = 5000;//repeattime  REPEATTIME
         private boolean isCancle = false;
         private OutputStream outputStream;
         private int pingId;
@@ -354,7 +354,7 @@ public class ClientRequestTask implements Runnable {
                 }
 
                 try {
-                    Thread.sleep(REPEATTIME);
+                    Thread.sleep(repeat_time);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
