@@ -8,7 +8,7 @@ Android Socket实现多个客户端连接同一个服务端（IM chat）
 
 3.Socket发消息及消息回执，收到消息并分发给其他客户端消息
 
-4.Socket断开与心跳？
+4.Socket断开与心跳？Socket的断开与重连？
 
 5.自定义UDP协议？协议有哪些内容
 
